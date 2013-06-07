@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class CategoryTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "should have a name" do
+    category = Category.new(:description => 'Test')
+    assert !category.save
+  end
 end
