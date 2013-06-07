@@ -1,4 +1,4 @@
-Thu, 06 Jun 2013 20:33:53 -0500
+Thu, 06 Jun 2013 21:48:35 -0500
 doc/README_FOR_APP	Thu, 06 Jun 2013 20:18:01 -0500
 app/controllers/admin/categories_controller.rb	Thu, 06 Jun 2013 20:18:01 -0500
 app/controllers/admin/competitions_controller.rb	Thu, 06 Jun 2013 20:18:01 -0500
@@ -15,7 +15,7 @@ app/controllers/users_controller.rb	Thu, 06 Jun 2013 20:18:01 -0500
 app/helpers/application_helper.rb	Thu, 06 Jun 2013 20:18:01 -0500
 app/models/category.rb	Thu, 06 Jun 2013 20:18:01 -0500
 app/models/challenge.rb	Thu, 06 Jun 2013 20:18:01 -0500
-app/models/competition.rb	Thu, 06 Jun 2013 20:18:01 -0500
+app/models/competition.rb	Thu, 06 Jun 2013 21:14:55 -0500
 app/models/login.rb	Thu, 06 Jun 2013 20:18:01 -0500
 app/models/news.rb	Thu, 06 Jun 2013 20:18:01 -0500
 app/models/participation.rb	Thu, 06 Jun 2013 20:18:01 -0500

@@ -160,6 +160,30 @@
 
   <div id="description" class="description">
     
+<p>The central object for each competition. Stores times basic information.</p>
+
+<h4 id="label-Important+Database+Attributes">Important Database Attributes</h4>
+<ul><li>
+<p><code>name</code> - The title of the competition</p>
+</li><li>
+<p><code>start</code> - The point at which submissions are accepted.</p>
+</li><li>
+<p><code>end</code> - The point at which submissions are no longer accepted.</p>
+</li><li>
+<p><code>active</code> - Whether the competition is allowing submissions.</p>
+</li><li>
+<p><code>hidden</code> - Whether the competition is shown to visitors.</p>
+</li></ul>
+
+<h4 id="label-Constraints">Constraints</h4>
+<ul><li>
+<p>All database attributes must be present.</p>
+</li><li>
+<p>The start time must be before the end time</p>
+</li><li>
+<p>No two competitions may have the same name</p>
+</li></ul>
+
   </div><!-- description -->
 
   
@@ -191,12 +215,12 @@
 
         <div class="method-description">
           
-          
+          <p>Checks to see if the competition is accepting submissions</p>
           
 
           
           <div class="method-source-code" id="open_to_submission-source">
-            <pre><span class="ruby-comment"># File app/models/competition.rb, line 23</span>
+            <pre><span class="ruby-comment"># File app/models/competition.rb, line 42</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">open_to_submission</span>
   <span class="ruby-identifier">ts</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">active</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">ts</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">start</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">ts</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">end</span>
@@ -222,12 +246,12 @@
 
         <div class="method-description">
           
-          
+          <p>Counts the number of problems in all categories</p>
           
 
           
           <div class="method-source-code" id="problem_count-source">
-            <pre><span class="ruby-comment"># File app/models/competition.rb, line 28</span>
+            <pre><span class="ruby-comment"># File app/models/competition.rb, line 48</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">problem_count</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">categories</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">problems</span>.<span class="ruby-identifier">length</span> }.<span class="ruby-identifier">reduce</span>(<span class="ruby-value">0</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">a</span><span class="ruby-operator">+</span><span class="ruby-identifier">x</span> } 
 <span class="ruby-keyword">end</span></pre>
@@ -252,12 +276,12 @@
 
         <div class="method-description">
           
-          
+          <p>Returns the problems from all categories concatenated into a list</p>
           
 
           
           <div class="method-source-code" id="problems-source">
-            <pre><span class="ruby-comment"># File app/models/competition.rb, line 32</span>
+            <pre><span class="ruby-comment"># File app/models/competition.rb, line 53</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">problems</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">categories</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">problems</span> }.<span class="ruby-identifier">flatten</span>
 <span class="ruby-keyword">end</span></pre>
@@ -282,12 +306,12 @@
 
         <div class="method-description">
           
-          
+          <p>Returns true if both times are set and start is before the end</p>
           
 
           
           <div class="method-source-code" id="sane_time_period-source">
-            <pre><span class="ruby-comment"># File app/models/competition.rb, line 17</span>
+            <pre><span class="ruby-comment"># File app/models/competition.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">sane_time_period</span>
   <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">start</span> <span class="ruby-keyword">and</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">end</span> <span class="ruby-keyword">and</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">start</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">end</span>
     <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span>(<span class="ruby-value">:start</span>, <span class="ruby-string">&quot;is later than end&quot;</span>)
@@ -314,12 +338,13 @@
 
         <div class="method-description">
           
-          
+          <p>Called before object creation to give some sane defaults for start and end
+times.</p>
           
 
           
           <div class="method-source-code" id="set_start_end-source">
-            <pre><span class="ruby-comment"># File app/models/competition.rb, line 12</span>
+            <pre><span class="ruby-comment"># File app/models/competition.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">set_start_end</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">start</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">end</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">+</span> <span class="ruby-value">2</span>.<span class="ruby-identifier">days</span>
