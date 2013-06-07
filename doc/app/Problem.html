@@ -64,17 +64,7 @@
 </nav>
 
     
-    <!-- Method Quickref -->
-<nav id="method-list-section" class="section">
-  <h3 class="section-header">Methods</h3>
-
-  <ul class="link-list">
     
-    <li><a href="#method-i-positive_points">#positive_points</a>
-    
-  </ul>
-</nav>
-
   </div>
 
   <div id="project-metadata">
@@ -152,6 +142,25 @@
 
   <div id="description" class="description">
     
+<p>Stores information about a problem and its value</p>
+
+<h4 id="label-Important+Database+Attributes">Important Database Attributes</h4>
+<ul><li>
+<p><code>title</code> - Shows up in the list of problems</p>
+</li><li>
+<p><code>description</code> - Shows up when a competitor selects a problem.
+Can contain HTML.</p>
+</li><li>
+<p><code>points</code> - Value of the problem</p>
+</li><li>
+<p><code>flag</code> - Solution to the problem</p>
+</li></ul>
+
+<h4 id="label-Constraints">Constraints</h4>
+<ul><li>
+<p>All database attributes must be present.</p>
+</li></ul>
+
   </div><!-- description -->
 
   
@@ -168,42 +177,6 @@
 
     <!-- Methods -->
     
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Instance Methods</h3>
-
-    
-      <div id="method-i-positive_points" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">positive_points</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code" id="positive_points-source">
-            <pre><span class="ruby-comment"># File app/models/problem.rb, line 13</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">positive_points</span>
-  <span class="ruby-identifier">points</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- positive_points-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- positive_points-method -->
-
-    
-    </section><!-- public-instance-method-details -->
-  
   </section><!-- 5Buntitled-5D -->
 
 </div><!-- documentation -->

@@ -1,6 +1,7 @@
 # Installing Network Security CTF Manager and Problems
 
 Installation Instructions are given for Ubuntu 12.04.02 64-bit servers.
+
 NOTE: These instructions are for UTD students or faculty attempting to set up
 this application. Anyone else should use whatever deployment approach they 
 prefer.
