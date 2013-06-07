@@ -1,0 +1,26 @@
+  <div class="well sidebar-nav">
+    <div class="page-header">
+      <h1><%= @competition.name %></h1>
+    </div>
+    <h2><%= link_to 'Scoreboard', scoreboard_competition_path(@competition) %></h2>
+    <h2><%= link_to 'Problem Stats', stats_competition_path(@competition) %></h2>
+    <hr />
+    <h2>Challenge List</h2>
+    <ul class="nav nav-list">
+      <% @competition.categories.each do |category| %>
+        <li class="nav-header"><%= category.name %></li>
+        <% category.problems.order(:points).each do |problem| %>
+          <% if problem.active %>
+            <li>
+              <% if @user.problems and @user.problems.include? problem %>
+                <s><%= link_to "#{problem.title} [#{problem.points} pts]", [@competition, problem] %></s>
+              <% else %>
+                <%= link_to "#{problem.title} [#{problem.points} pts]", [@competition, problem] %>
+              <% end %>
+            </li>
+          <% end %>
+        <% end %>
+        <hr />
+      <% end %>
+    </ul>
+  </div>

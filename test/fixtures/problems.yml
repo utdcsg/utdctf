@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  description: MyText
+  points: 1
+  active: false
+  flag: MyString
+  title: MyString
+
+two:
+  description: MyText
+  points: 1
+  active: false
+  flag: MyString
+  title: MyString

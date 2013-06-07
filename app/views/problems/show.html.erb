@@ -1,0 +1,31 @@
+<% content_for :leftmenu do %>
+  <%= render :partial => 'competitions/leftmenu' %>
+<% end %>
+
+<div class="well">
+  <h3><%= @problem.title %> - <%= @problem.points %> points</h3>
+  <% if @user.problems and @user.problems.include? @problem %>
+    <p class="alert alert-error"><strong>Notice:</strong> You have already solved this problem!</p>
+  <% end %>
+  <hr />
+  <% if @category and @category.description and @category.description.length > 0 %>
+    <h4><%= @category.name %> Description:</h4>
+    <p><%= simple_format @category.description %></p>
+    <hr />
+  <% end %>
+  <h4>Problem Description:</h4>
+  <br />
+  <p><%= simple_format @problem.description %></p>
+  <hr />
+  <h4>Flag Submission:</h4>
+  <%= form_for([@competition,@solution]) do |f| %>
+    <%= text_field_tag :flag %>
+
+    <%= f.hidden_field :user_id, :value => session[:user_id] %>
+    <%= f.hidden_field :problem_id, :value => @problem.id %>
+
+    <div class="actions">
+      <%= f.submit 'Submit Flag', :class => 'btn' %>
+    </div>
+  <% end %>
+</div>

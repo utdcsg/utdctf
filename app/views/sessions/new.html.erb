@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="span4">
+      <%= form_tag do %>
+        <fieldset>
+          <legend>Please Log In</legend>
+
+          <div class="field">
+            <label for="name">Username:</label>
+            <%= text_field_tag :name, params[:name] %>
+          </div>
+
+          <div class="field">
+            <label for="password">Password:</label>
+            <%= password_field_tag :password, params[:password] %>
+          </div>
+
+          <div class = "actions">
+            <%= submit_tag 'Login', :class => 'btn' %>
+          </div>
+        </fieldset>
+      <% end %>
+      <hr />
+      Don't have an account?
+      <%= link_to 'Register', new_user_path, :class => 'btn btn-primary' %>
+    </div>
+</div>

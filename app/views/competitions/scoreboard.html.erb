@@ -1,0 +1,29 @@
+<% content_for :leftmenu do %>
+  <%= render :partial => 'leftmenu' %>
+<% end %>
+
+<div class="page-header">
+  <h1>Scoreboard</h1>
+</div>
+
+<div class="well">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Position</th>
+        <th>User</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @entries.each_with_index do |entry, index| %>
+        <tr>
+          <td><%= index+1 %></td>
+          <td><%= entry[:name] %></td>
+          <td><%= entry[:score] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

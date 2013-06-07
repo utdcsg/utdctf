@@ -1,0 +1,33 @@
+<%= form_for([:admin,@competition, @news]) do |f| %>
+  <% if @news.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@news.errors.count, "error") %> prohibited this news from being saved:</h2>
+
+      <ul>
+      <% @news.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row-fluid">
+    <div class="span12">
+        <div class="field">
+          <%= f.label :title %>
+          <%= f.text_field :title %>
+        </div>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="span12">
+        <div class="field">
+          <%= f.label :content %>
+          <%= f.text_area :content, :class => 'input-xxlarge' %>
+        </div>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit nil, :class => 'btn' %>
+  </div>
+<% end %>

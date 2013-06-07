@@ -1,0 +1,25 @@
+Thu, 06 Jun 2013 20:04:13 -0500
+doc/README_FOR_APP	Thu, 06 Jun 2013 19:29:03 -0500
+app/controllers/admin/categories_controller.rb	Thu, 06 Jun 2013 18:05:54 -0500
+app/controllers/admin/competitions_controller.rb	Thu, 06 Jun 2013 18:05:54 -0500
+app/controllers/admin/news_controller.rb	Thu, 06 Jun 2013 18:05:54 -0500
+app/controllers/admin/problems_controller.rb	Thu, 06 Jun 2013 18:05:54 -0500
+app/controllers/admin/users_controller.rb	Thu, 06 Jun 2013 18:05:54 -0500
+app/controllers/application_controller.rb	Thu, 06 Jun 2013 18:05:54 -0500
+app/controllers/competitions_controller.rb	Thu, 06 Jun 2013 18:05:54 -0500
+app/controllers/home_controller.rb	Thu, 06 Jun 2013 18:05:54 -0500
+app/controllers/problems_controller.rb	Thu, 06 Jun 2013 18:05:54 -0500
+app/controllers/sessions_controller.rb	Thu, 06 Jun 2013 18:05:54 -0500
+app/controllers/solves_controller.rb	Thu, 06 Jun 2013 18:05:54 -0500
+app/controllers/users_controller.rb	Thu, 06 Jun 2013 18:05:54 -0500
+app/helpers/application_helper.rb	Thu, 06 Jun 2013 18:05:54 -0500
+app/models/category.rb	Thu, 06 Jun 2013 18:05:54 -0500
+app/models/challenge.rb	Thu, 06 Jun 2013 18:05:54 -0500
+app/models/competition.rb	Thu, 06 Jun 2013 18:05:54 -0500
+app/models/login.rb	Thu, 06 Jun 2013 18:05:54 -0500
+app/models/news.rb	Thu, 06 Jun 2013 18:05:54 -0500
+app/models/participation.rb	Thu, 06 Jun 2013 18:05:54 -0500
+app/models/person.rb	Thu, 06 Jun 2013 18:05:54 -0500
+app/models/problem.rb	Thu, 06 Jun 2013 18:05:54 -0500
+app/models/solve.rb	Thu, 06 Jun 2013 18:05:54 -0500
+app/models/user.rb	Thu, 06 Jun 2013 20:02:04 -0500

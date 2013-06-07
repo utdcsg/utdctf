@@ -1,0 +1,44 @@
+<div class="page-header">
+  <h1>Competition Details</h1>
+</div>
+
+<div class="well">
+  <h3><%= @competition.name %></h3>
+  <strong>From <%= @competition.start.strftime("%d %B, %Y - %H:%M") %> to <%= @competition.end.strftime("%d %B, %Y - %H:%M") %></strong>
+  <strong>Currently: </strong><span class="label <%= " label-success" if @competition.active %>"><%= @competition.active ? "Active" : "Inactive" %></span>
+</div>
+
+<div class="well">
+  <h3>Categories and Problems</h3>
+  <% if @competition.categories.length == 0 %>
+    None
+  <% else %>
+    <ul>
+      <% @competition.categories.each do |category| %>
+        <li><%= category.name %></li>
+        <ul>
+          <% category.problems.each do |problem| %>
+            <li><%= problem.title %> - <%= problem.points %> points</li>
+          <% end %>
+        </ul>
+      <% end %>
+    </ul>
+  <% end %>
+  <br />
+  <hr />
+  <h3>News</h3>
+  <% if @competition.news.length == 0 %>
+    None
+  <% else %>
+    <dl>
+      <% @competition.news.each do |news_item| %>
+        <dt><%= news_item.title %> - <%= news_item.created_at.strftime("%d %B, %Y - %H:%M") %></dt>
+        <dd><%= news_item.content %></dd>
+      <% end %>
+    </dl>
+  <% end %>
+
+</div>
+
+<%= link_to 'Edit', [:edit, :admin, @competition], :class => 'btn' %>
+<%= link_to 'Back', admin_competitions_path, :class => 'btn' %>

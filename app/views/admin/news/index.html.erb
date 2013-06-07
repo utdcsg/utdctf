@@ -1,0 +1,31 @@
+<div class="page-header">
+  <h1>Listing of News Items for "<%= @competition.name %>"</h1>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @news.each do |news| %>
+      <tr>
+        <td><%= news.title %></td>
+        <td><%= news.content %></td>
+        <td><%= link_to 'Edit', [:edit, :admin, @competition, news], :class => 'btn' %></td>
+        <td><%= link_to 'Destroy', [:admin, @competition, news], :confirm => 'Are you sure?', :method => :delete, :class => 'btn' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Competition News', new_admin_competition_news_path(@competition), :class => 'btn btn-primary' %>
+
+<%= link_to 'Back to Competitions', admin_competitions_path, :class => 'btn' %>

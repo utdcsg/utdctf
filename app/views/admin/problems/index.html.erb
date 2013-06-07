@@ -1,0 +1,41 @@
+<div class="page-header">
+  <h1>List of Problems for "<%= @category.name %>"</h1>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Points</th>
+      <th>Active</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @problems.each do |problem| %>
+      <tr>
+        <td><%= problem.title %></td>
+        <td><%= problem.description %></td>
+        <td><%= problem.points %></td>
+        <% if problem.active %>
+          <td><span class="label label-success">True</span></td>
+        <% else %>
+          <td><span class="label">False</span></td>
+        <% end %>
+        <td><%= link_to 'Show', [:admin, @competition, @category, problem], :class => 'btn' %></td>
+        <td><%= link_to 'Edit', [:edit, :admin, @competition, @category, problem], :class => 'btn' %></td>
+        <td><%= link_to 'Destroy', [:admin, @competition, @category, problem], :confirm => 'Are you sure?', :method => :delete, :class => 'btn' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Problem', [:new, :admin, @competition, @category, :problem], :class => 'btn btn-primary' %>
+
+<%= link_to 'Back to Categories', admin_competition_categories_path(@category.competition), :class => 'btn' %>

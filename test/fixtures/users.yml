@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  role: MyString
+  name: MyString
+  description: MyText
+  hashed_password: MyString
+  salt: MyString
+  last_submission: 2012-08-18 04:24:16
+  locked: 2012-08-18 04:24:16
+  flood_count: 1
+
+two:
+  role: MyString
+  name: MyString
+  description: MyText
+  hashed_password: MyString
+  salt: MyString
+  last_submission: 2012-08-18 04:24:16
+  locked: 2012-08-18 04:24:16
+  flood_count: 1

@@ -1,0 +1,20 @@
+<div class="nav-collapse">
+  <ul id="menu" class="nav nav-pills">
+    <% if current_user %>
+      <% if current_user.role == 'admin' %>
+        <li id="home"><%= link_to "<i class='icon-search icon-white'></i> Preview".html_safe, root_path %></li>
+        <li id="users"><%= link_to "<i class='icon-user icon-white'></i> Users".html_safe, admin_users_path %></li>
+        <li id="competitions"><%= link_to "<i class='icon-flag icon-white'></i> Competitions".html_safe, admin_competitions_path %></li>
+      <% else %>
+        <li id="home"><%= link_to "<i class='icon-flag icon-white'></i> Competitions".html_safe, root_path %></li>
+        <li id="users"><%= link_to "<i class='icon-user icon-white'></i> Edit Profile".html_safe, edit_user_path(current_user) %></li>
+      <% end %>
+        <li id="logout"><%= link_to "<i class='icon-off icon-white'></i> Logout".html_safe, logout_path, :method => :delete %></li>
+    <% else %>
+      <li id="login"><%= link_to "<i class='icon-user icon-white'></i> Login".html_safe, login_path %></li>
+    <% end %>
+  </ul>
+  <p class="navbar-text pull-right">
+  </p>
+</div>
+

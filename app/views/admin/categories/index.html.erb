@@ -1,0 +1,33 @@
+<div class="page-header">
+  <h1>List of Categories for "<%= @competition.name %>"</h1>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.name %></td>
+        <td><%= link_to 'Details', [:admin,@competition, category], :class => 'btn' %></td>
+        <td><%= link_to 'Edit', [:edit, :admin, @competition, category], :class => 'btn' %></td>
+        <td><%= link_to 'Edit Problems', [:admin, @competition, category, :problems], :class => 'btn' %></td>
+        <td><%= link_to 'Destroy', [:admin,@competition, category], :confirm => 'Are you sure?', :method => :delete, :class => 'btn' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Category', new_admin_competition_category_path(@competition), :class => 'btn btn-primary' %>
+
+<%= link_to 'Back to Competitions', admin_competitions_path, :class => 'btn' %>

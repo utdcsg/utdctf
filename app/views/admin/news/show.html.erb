@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @news.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @news.content %>
+</p>
+
+
+<%= link_to 'Edit', [:edit, :admin, @competition, @news] %> |
+<%= link_to 'Back', admin_competition_news_index_path(@competition) %>
