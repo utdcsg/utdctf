@@ -7,18 +7,24 @@
     <hr />
     <h2>Challenge List</h2>
     <ul class="nav nav-list">
-      <% @competition.categories.each do |category| %>
+      <% @competition.available_categories.each do |category| %>
         <li class="nav-header"><%= category.name %></li>
-        <% category.problems.order(:points).each do |problem| %>
-          <% if problem.active %>
-            <li>
-              <% if @user.problems and @user.problems.include? problem %>
+        <% category.available_problems.each do |problem| %>
+          <li>
+            <% if @user.problems and @user.problems.include? problem %>
+              <% if problem.active %>
                 <s><%= link_to "#{problem.title} [#{problem.points} pts]", [@competition, problem] %></s>
               <% else %>
-                <%= link_to "#{problem.title} [#{problem.points} pts]", [@competition, problem] %>
+                <s><%= link_to "#{problem.title} [#{problem.points} pts]", [@competition, problem], style:  'color:#C0C0C0;' %></s>
               <% end %>
-            </li>
-          <% end %>
+            <% else %>
+              <% if problem.active %>
+                <%= link_to "#{problem.title} [#{problem.points} pts]", [@competition, problem] %>
+              <% else %>
+                <%= link_to "#{problem.title} [#{problem.points} pts]", [@competition, problem], style:  'color:#C0C0C0;' %>
+              <% end %>
+            <% end %>
+          </li>
         <% end %>
         <hr />
       <% end %>

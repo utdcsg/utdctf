@@ -9,6 +9,7 @@
       <th>Description</th>
       <th>Points</th>
       <th>Active</th>
+      <th>Hidden</th>
       <th></th>
       <th></th>
       <th></th>
@@ -16,12 +17,17 @@
   </thead>
 
   <tbody>
-    <% @problems.each do |problem| %>
+    <% @problems.order('created_at').each do |problem| %>
       <tr>
         <td><%= problem.title %></td>
         <td><%= problem.description %></td>
         <td><%= problem.points %></td>
         <% if problem.active %>
+          <td><span class="label label-success">True</span></td>
+        <% else %>
+          <td><span class="label">False</span></td>
+        <% end %>
+        <% if problem.hidden %>
           <td><span class="label label-success">True</span></td>
         <% else %>
           <td><span class="label">False</span></td>

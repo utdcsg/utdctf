@@ -19,4 +19,10 @@ class Problem < ActiveRecord::Base
   validates :title, :presence => true
   validates :description, :presence => true
   validates :flag, :presence => true
+  validate :positive_points
+
+  def positive_points
+    points >= 0
+  end
+  
 end

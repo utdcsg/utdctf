@@ -13,4 +13,13 @@ class Category < ActiveRecord::Base
   belongs_to :competition
 
   validates :name, :presence => true
+  
+  def available_problems
+    self.problems.order('created_at').select{|p| not p.hidden}
+  end
+  
+  def has_problems
+    self.problems.order(:points).select{|p| not p.hidden}.length > 0
+  end
+
 end

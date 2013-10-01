@@ -53,5 +53,9 @@ class Competition < ActiveRecord::Base
   def problems
     self.categories.map {|c| c.problems }.flatten
   end
+  
+  def available_categories
+    self.categories.order('created_at').select{|p| p.has_problems}
+  end
 
 end

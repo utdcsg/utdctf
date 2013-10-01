@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
   validates :name, :presence => true, :uniqueness => true
   validates :password, :confirmation => true, :presence => true
   validates :role, :presence => true, :inclusion => { :in => [:user, :admin] }
+  validates :password, :confirmation => true
 
   # Used for password confirmation forms
   attr_accessor :password_confirmation
@@ -81,7 +82,7 @@ class User < ActiveRecord::Base
   #   - An integer score representing the sum of the user's solved problems for that competition.
   def score(competition)
     competition_problems = competition.problems
-    competition_problems.select { |p| problems.include? p and p.active }.reduce(0) { |a,x| a+x.points }
+    competition_problems.select { |p| problems.include? p and not p.hidden }.reduce(0) { |a,x| a+x.points }
   end
 
   # Overloaded = operator that allows the password to be hashed and stored transparently

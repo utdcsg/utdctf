@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
   skip_before_filter :check_admin
-  skip_before_filter :authorize
+  skip_before_filter :authorize, :only => [:new, :create]
 
   def new
     @user = User.new
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
   end
 
   def create
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
 
     respond_to do |format|
       if @user.update_attributes(params[:user])

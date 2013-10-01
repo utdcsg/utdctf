@@ -10,6 +10,12 @@ class SolvesController < ApplicationController
 
     if not @competition.open_to_submission
       redirect_to @competition, :notice => "#{flag == @solve.problem.flag ? "Correct!" : "Incorrect."}  However, this competition is inactive." 
+    elsif not @solve.problem.active
+      if @solve.problem.hidden
+        redirect_to @competition
+      else
+        redirect_to @competition, :notice => "#{flag == @solve.problem.flag ? "Correct!" : "Incorrect."}  However, this problem is inactive."
+      end
     else
       if @solve.user.locked
         if Time.now - @solve.user.locked >= 60

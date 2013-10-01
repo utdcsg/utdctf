@@ -11,14 +11,14 @@
     <thead>
       <tr>
         <th></th>
-        <% @competition.categories.each do |category| %>
-          <th colspan="<%= category.problems.count %>"><%= category.name %></th>
+        <% @competition.available_categories.each do |category| %>
+          <th colspan="<%= category.available_problems.count %>"><%= category.name %></th>
         <% end %>
       </tr>
       <tr>
         <th>User</th>
-        <% @competition.categories.each do |category| %>
-          <% category.problems.each do |problem| %>
+        <% @competition.available_categories.each do |category| %>
+          <% category.available_problems.each do |problem| %>
             <th><%= problem.title %> <span class="label"><%= problem.solves.length %></span></th>
           <% end %>
         <% end %>
@@ -27,20 +27,22 @@
 
     <tbody>
       <% @competition.users.sort_by {|u| u.name.downcase }.each do |user| %>
-        <tr>
-          <td><%= user.name %></td>
-          <% @competition.categories.each do |category| %>
-            <% category.problems.each do |problem| %>
-              <td>
-                <% if problem.users.include? user %>
-                  <i class="icon-ok icon-white"></i>
-                <% else %>
-                  <i class="icon-remove icon-white"></i>
-                <% end %>
-              </td>
+        <% if user.name != "admin" %>
+          <tr>
+            <td><%= user.name %></td>
+            <% @competition.available_categories.each do |category| %>
+              <% category.available_problems.each do |problem| %>
+                <td>
+                  <% if problem.users.include? user %>
+                    <i class="icon-ok icon-white"></i>
+                  <% else %>
+                    <i class="icon-remove icon-white"></i>
+                  <% end %>
+                </td>
+              <% end %>
             <% end %>
-          <% end %>
-        </tr>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>

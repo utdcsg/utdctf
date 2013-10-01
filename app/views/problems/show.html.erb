@@ -28,4 +28,7 @@
       <%= f.submit 'Submit Flag', :class => 'btn' %>
     </div>
   <% end %>
+  <% if not @problem.active %>
+    <i><h5>Problem is inactive, you can still try to solve it but no points will be awarded.</h5></i>
+  <% end %>
 </div>
