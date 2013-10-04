@@ -6,6 +6,9 @@ class ProblemsController < ApplicationController
   def show
     @problem = Problem.find(params[:id])
     @competition = Competition.find(params[:competition_id])
+    if not @problem.categories.map{ |c| c.competition.id}.include?(@competition.id)
+      redirect_to competition_url(@competition), :notice => "That problem does not exist."
+    end
     @category = @problem.categories.find_by_competition_id(@competition.id)
     @user = User.find(session[:user_id])
     @solution = Solve.new(:problem_id => @problem.id, :user_id => session[:user_id])
